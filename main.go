@@ -9,6 +9,10 @@ import (
 func main() {
 	fmt.Println("When mushroom hunting, look out for these poisonous mushrooms:")
 	for _, m := range mushroom.Poisonous {
-		fmt.Printf(" - %s (%s)\n", m.CommonName, m.BinomialName)
+		if m.CommonName != "" {
+			fmt.Printf(" - %s (%s)\n", m.BinomialName, m.CommonName)
+		} else {
+			fmt.Printf(" - %s\n", m.BinomialName)
+		}
 	}
 }
