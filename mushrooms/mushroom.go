@@ -1,5 +1,5 @@
-// Package mushroom provides mushrooms and information about them.
-package mushroom
+// Package mushrooms provides mushrooms and information about them.
+package mushrooms
 
 var Poisonous = []Mushroom{
 	{"amanita muscaria", "fly agaric"},
