@@ -8,6 +8,7 @@ var Poisonous = []Mushroom{
 	{"galerina marginata", "deadly galerina"},
 	{"hypholoma fasciculare", "sulphur tuft"},
 	{"omphalotus illudens", "jack-o'lantern mushroom"},
+	{"pholiotina rugosa", ""},
 }
 
 type Mushroom struct {
