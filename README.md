@@ -83,6 +83,49 @@ Old code that depends on `github.com/MrAlias/erase/mushroom` still compiles, but
 
 The old abandoned module, `mushroom`, needs to be cleaned up.
 
+### Deprecate `mushrooms`
+
+Communicate to the user that the `mushroom` module is no longer supported and to provide migration instructions to start using `mushrooms` by deprecating the package.
+
+Ultimately this means ...
+
+- update `mushroom/go.mod` to include a deprecation notice
+- release an incremented version of `mushroom` to inclued the deprecation notice
+
+The only issue is, the `main` branch no longer contains `mushroom/go.mod`.
+To accomplish this a branch needs to be created from the commit prior to its removal.
+
+```sh
+git branch erase-mushroom bfd719a~1
+```
+
+Now update `mushroom/go.mod`.
+
+```sh
+sed -i.old '1s;^;// Deprecated: use github.com/MrAlias/erase/mushrooms instead.\n;' mushroom/go.mod
+git commit -m "Deprecate github.com/MrAlias/erase/mushroom" mushroom/go.mod
+git push origin erase-mushroom
+git tag -s -a -m "Release github.com/MrAlias/erase/mushroom v0.0.3" mushroom/v0.0.3
+git push origin mushroom/v0.0.3
+```
+
+There is now a new `mushroom/v0.0.3` tag in the repository!
+
+![20220527_132940](https://user-images.githubusercontent.com/5543599/170785250-7d204e72-9ffb-463e-9b6b-9b9e689c43be.png)
+
+And similarly the package documentation lists `github.com/MrAlias/erase/mushroom` as deprecated.
+
+![20220527_133110](https://user-images.githubusercontent.com/5543599/170785481-91812348-54ba-49e5-ab19-6806323bc1c9.png)
+
+The last thing to do for this is to protect the `erase-mushroom` branch.
+It should not be allowed to be deleted, otherwise the source of the `v0.0.3` version of module will not available.
+
+Create an empty branch protection rule in GitHub.
+
+![20220527_135002](https://user-images.githubusercontent.com/5543599/170787801-5f05bee5-dfe9-44b9-b144-b30aa792d842.png)
+
+By default, this protection rule will prevent the `erase-mushroom` branch from being deleted.
+
 [a multi-module Go repository]: https://github.com/open-telemetry/opentelemetry-go
 [deprecation]: https://go.dev/ref/mod#go-mod-file-module-deprecation
 [retraction]: https://golang.org/ref/mod#go-mod-file-retract
