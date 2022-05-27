@@ -83,7 +83,7 @@ Old code that depends on `github.com/MrAlias/erase/mushroom` still compiles, but
 
 The old abandoned module, `mushroom`, needs to be cleaned up.
 
-### Deprecate `mushrooms`
+### Deprecate `mushroom`
 
 Communicate to the user that the `mushroom` module is no longer supported and to provide migration instructions to start using `mushrooms` by deprecating the package.
 
