@@ -57,6 +57,32 @@ erase
 └── README.md
 ```
 
+Released as `v0.0.2`
+
+### Move `mushroom` -> `mushrooms`
+
+New repository structure in release `v0.0.3`:
+
+```
+erase
+├── go.mod
+├── go.sum
+├── LICENSE
+├── main.go
+├── mushrooms
+│   ├── go.mod
+│   └── mushroom.go
+└── README.md
+```
+
+Now the Go docs page lists two similar modules.
+
+![20220527_123433](https://user-images.githubusercontent.com/5543599/170778527-485be92f-825d-4807-9334-20d1072cb8bc.png)
+
+Old code that depends on `github.com/MrAlias/erase/mushroom` still compiles, but it is not obvious to new users which module to use without deeper investigation about each of their versions.
+
+The old abandoned module, `mushroom`, needs to be cleaned up.
+
 [a multi-module Go repository]: https://github.com/open-telemetry/opentelemetry-go
 [deprecation]: https://go.dev/ref/mod#go-mod-file-module-deprecation
 [retraction]: https://golang.org/ref/mod#go-mod-file-retract
