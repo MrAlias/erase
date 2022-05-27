@@ -37,6 +37,26 @@ The Go module system has two relevant directives: [deprecation] and [retraction]
 > When a module version is retracted, users will not upgrade to it automatically using `go get`, `go mod tidy`, or other commands.
 > Builds that depend on retracted versions should continue to work, but users will be notified of retractions when they check for updates with `go list -m -u` or update a related module with `go get`.
 
+## Investigation
+
+### Starting point
+
+![20220527_110500](https://user-images.githubusercontent.com/5543599/170767962-5506307b-6965-4c29-b98e-2b138a7e5ad0.png)
+
+Original respository structure:
+
+```
+erase
+├── go.mod
+├── go.sum
+├── LICENSE
+├── main.go
+├── mushroom
+│   ├── go.mod
+│   └── mushroom.go
+└── README.md
+```
+
 [a multi-module Go repository]: https://github.com/open-telemetry/opentelemetry-go
 [deprecation]: https://go.dev/ref/mod#go-mod-file-module-deprecation
 [retraction]: https://golang.org/ref/mod#go-mod-file-retract
