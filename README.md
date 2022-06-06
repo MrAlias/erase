@@ -117,6 +117,21 @@ And similarly the package documentation lists `github.com/MrAlias/erase/mushroom
 
 ![20220527_133110](https://user-images.githubusercontent.com/5543599/170785481-91812348-54ba-49e5-ab19-6806323bc1c9.png)
 
+Now when packages that use `github.com/MrAlias/erase/mushroom` they are presented with the deprecation warning.
+
+```sh
+$ go get -u
+go: module github.com/MrAlias/erase/mushroom is deprecated: use github.com/MrAlias/erase/mushrooms instead.
+```
+
+Similarly for new additions:
+
+```sh
+$ go get github.com/MrAlias/erase/mushroom@v0.0.3
+go: downloading github.com/MrAlias/erase v0.0.3
+go: module github.com/MrAlias/erase/mushroom is deprecated: use github.com/MrAlias/erase/mushrooms instead.
+```
+
 The last thing to do for this is to protect the `erase-mushroom` branch.
 It should not be allowed to be deleted, otherwise the source of the `v0.0.3` version of module will not available.
 
@@ -125,6 +140,18 @@ Create an empty branch protection rule in GitHub.
 ![20220527_135002](https://user-images.githubusercontent.com/5543599/170787801-5f05bee5-dfe9-44b9-b144-b30aa792d842.png)
 
 By default, this protection rule will prevent the `erase-mushroom` branch from being deleted.
+
+### Remove `mushroom` from `github.com/MrAlias/erase` documentation
+
+The `mushroom` module is deprecated, but the `github.com/MrAlias/erase` module documentation still lists it.
+
+![20220527_135806](https://user-images.githubusercontent.com/5543599/170789743-87d1012c-a3ae-46bd-bac4-659e792bdc03.png)
+
+Publishing a new version of `github.com/MrAlias/erase` does not remove it.
+
+![20220527_141722](https://user-images.githubusercontent.com/5543599/170790547-2b2ea478-d3e0-4de5-8d7e-8ca5cadb3604.png)
+
+
 
 [a multi-module Go repository]: https://github.com/open-telemetry/opentelemetry-go
 [deprecation]: https://go.dev/ref/mod#go-mod-file-module-deprecation
